@@ -1,6 +1,7 @@
 /*
  * Leetcode 138: Copy List with Random Pointer
  * https://leetcode.com/problems/copy-list-with-random-pointer/
+ * Method without using hashmap, pure linkedlit manipulation
  * Martin.Xia
  */
 
