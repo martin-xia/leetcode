@@ -14,32 +14,29 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
+
 public class Solution {
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<Integer>();
-        if(root==null) {
+        if(root == null) {
             return res;
         }
-        Stack<TreeNode> stack = new Stack<TreeNode>();
-        stack.push(root);
-        while(!stack.isEmpty()) {
-            TreeNode cur = stack.peek();
-            //cur node is leaf node
-            if(cur.left==null && cur.right==null) {
-                TreeNode pop = stack.pop();
-                res.add(pop.val);
+        LinkedList<TreeNode> stack = new LinkedList<TreeNode>();
+        TreeNode pre = null;
+        while(root != null || !stack.isEmpty()) {
+            if(root!=null) {
+                stack.push(root);
+                root = root.left;
             }
-            //cur node has child node, drill down 
             else {
-                if(cur.right!=null) {
-                    stack.push(cur.right);
-                    //mark cur.right as visited
-                    cur.right = null;
+                TreeNode peekNode = stack.peek();
+                if(peekNode.right!=null && pre != peekNode.right) {
+                    root = peekNode.right;
                 }
-                if(cur.left!=null) {
-                    stack.push(cur.left);
-                    //mark cur.left as visited
-                    cur.left = null;
+                else {
+                    stack.pop();
+                    res.add(peekNode.val);
+                    pre = peekNode;
                 }
             }
         }

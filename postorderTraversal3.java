@@ -15,8 +15,8 @@
  * }
  */
 public class Solution {
-    public ArrayList<Integer> postorderTraversal(TreeNode root) {
-        ArrayList<Integer> res = new ArrayList<Integer>();
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<Integer>();
         TreeNode dummy = new TreeNode(-1);
         dummy.left = root;
         TreeNode cur = dummy;
@@ -49,7 +49,7 @@ public class Solution {
         } 
         return res;
     }
-    void reverse(TreeNode start, TreeNode end) {
+    private void reverse(TreeNode start, TreeNode end) {
         if (start == end)
             return;
         TreeNode pre = start;
