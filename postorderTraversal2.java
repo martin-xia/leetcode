@@ -23,15 +23,16 @@ public class Solution {
         }
         LinkedList<TreeNode> stack = new LinkedList<TreeNode>();
         TreeNode pre = null;
-        while(root != null || !stack.isEmpty()) {
-            if(root!=null) {
-                stack.push(root);
-                root = root.left;
+        TreeNode p =root;
+        while(p != null || !stack.isEmpty()) {
+            if(p!=null) {
+                stack.push(p);
+                p = p.left;
             }
             else {
                 TreeNode peekNode = stack.peek();
                 if(peekNode.right!=null && pre != peekNode.right) {
-                    root = peekNode.right;
+                    p = peekNode.right;
                 }
                 else {
                     stack.pop();
